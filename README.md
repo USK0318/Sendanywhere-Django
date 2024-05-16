@@ -26,18 +26,19 @@ This Django project allows users to transfer files securely between systems usin
 4. Set up the MySQL database:
    - Create a MySQL database for the project.
    - Update the `DATABASES` configuration in `settings.py` with your database credentials.
+     
+   ```python
    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'your_database_name',
-        'USER': 'your_database_user',
-        'PASSWORD': 'your_database_password',
-        'HOST': 'localhost',  # Or the hostname of your database server
-        'PORT': '3306',        # Or the port your database is running on
-    }
-}
-
-
+       'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'your_database_name',
+           'USER': 'your_database_user',
+           'PASSWORD': 'your_database_password',
+           'HOST': 'localhost',  # Or the hostname of your database server
+           'PORT': '3306',        # Or the port your database is running on
+       }
+   }
+   ```
 5. Apply database migrations:
    ```bash
    python manage.py migrate
