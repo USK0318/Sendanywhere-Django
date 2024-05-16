@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Anywhere</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #6a11cb, #2f7afc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #head {
+            width: 45%;
+            text-align: center;
+        }
+        h1 {
+            position: relative;
+            left: -60px;
+            color: white;
+            font-size: 2.8rem;
+        }
+        #container {
+            position: relative;
+            left: 50px; /* Position form to the left */
+            width: 90%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px auto; /* Center container */
+        }
+       
+        button:hover {
+            background-color: #6a11cb;
+            transform: translateY(-2px);
+        }
+        input[type="submit"] {
+            margin-bottom: 20px;
+            max-width: 50%;
+            
+        }
+        input[type="text"] {
+            width: 80%; /* Adjust the width of the text input */
+            height: 50px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        @keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#head {
+    position: relative;
+    left: 50px;
+    width: 45%;
+    text-align: center;
+    margin: 5px; /* Reduced margin */
+    animation: fadeIn 0.8s ease-out; /* Apply the fade-in animation */
+}
+
+h1 {
+    color: white;
+    font-size: 2.8rem;
+    margin: 20px 0;
+}
+        
+   
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div id="container">
+        <i class="fas fa-paper-plane" style="font-size: 150px; color: #2575fc; margin: 40px;"></i> <!-- Line icon for paper plane -->
+        <div>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="text_input" id="text_input" placeholder="Enter cour code here" required>
+                <br><br>
+                <input type="submit" value="Submit" style="width: 60%; height: 50px; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer; background-color: #2575fc; color: white; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+            </form>
+            {% for i in messages %}
+            <p style="color: #db1414;">{{i}}</p>
+            {% endfor %}
+            {% if nom == 2 %}
+            <a href="" onclick="handleDownloadAndAction('{{ a.data.url }}','{{a.id}}');" style="text-decoration: none; margin-bottom: 20px; display: inline-block;">
+                <b style="color: #2575fc;">Click here to download</b>
+            </a>                      
+            {% endif %}
+
+        </div>
+    </div>
+    <div id="head">
+        <h1>Receive From Anywhere</h1>
+    </div>
+        <script>
+           
+    function handleDownloadAndAction(imageUrl,idpk) {
+        // Step 1: Download the image
+        downloadImage(imageUrl);
+
+        // Step 2: Perform another action (e.g., trigger Django template operation)
+        performDjangoAction(idpk);
+    }
+
+    function downloadImage(imageUrl) {
+        var link = document.createElement('a');
+        link.href = imageUrl;
+        link.download = 'downloaded_image.jpg'; 
+        link.click();
+    }
+
+    function performDjangoAction(idpk) {
+        window.location.href = 'del/' + idpk ; // Redirect to the Django view   
+    }
+</script>
+
+
+</body>
+</html>

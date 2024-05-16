@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Anywhere</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #6a11cb, #2f7afc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #head {
+            position: relative;
+            left: 50px;
+            width: 45%;
+            text-align: center;
+            margin: 5px; /* Reduced margin */
+        }
+        h1 {
+            color: white;
+            font-size: 2.8rem;
+            margin: 20px 0;
+        }
+        #container {
+            position: relative;
+            left: -50px;
+            width: 90%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px auto; /* Center container */
+        }
+        
+        button {
+            width: 60%;
+            height: 50px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-bottom: 25px;
+            background-color: #2575fc;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #6a11cb;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            #head {
+                display: none; /* Hide header on smaller screens */
+            }
+            #container {
+                width: 100%;
+                border-radius: 0; /* Remove border radius for full-width container */
+            }
+        }
+        /* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#head {
+    position: relative;
+    left: 50px;
+    width: 45%;
+    text-align: center;
+    margin: 5px; /* Reduced margin */
+    animation: fadeIn 0.8s ease-out; /* Apply the fade-in animation */
+}
+
+h1 {
+    color: white;
+    font-size: 2.8rem;
+    margin: 20px 0;
+}
+
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div id="head">
+        <h1>Send Anywhere</h1>
+    </div>
+    <div id="container">
+        <i class="fas fa-paper-plane" style="font-size: 150px; color: #2575fc; margin: 40px;"></i> <!-- Line icon for paper plane -->
+        <div>
+            <a href="{% url 'sendurl' %}"><button>Send</button></a>
+            <br>
+            <a href="{% url 'reciveurl' %}"><button>Receive</button></a>
+        </div>
+    </div>
+</body>
+</html>
